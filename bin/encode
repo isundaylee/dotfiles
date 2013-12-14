@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+#
+# ENCODE
+#
+# Encode (or decode!) a file to encrypt it. Used with `decode`. 
+#
+# Run on unencoded file to encode. Run on encoded file to decode. 
+#
+# Run on directory to process recursively. 
+#
+# Examples:
+#
+#   encode <path>
+#   encode ~/Desktop/whatever
+
+class Encoder
+
+  require 'fileutils'
+
+  CHUNK_SIZE = 1024 * 1024
+
+  def self.encode(file)
+    puts "Encoding file #{file}. "
+    enc_file = file + '.encoding'
+
+    File.open(file, 'rb+') do |f|
+      pos = 0
+      while pos < f.size
+        f.seek pos, IO::SEEK_SET
+        c = f.read(1).ord
+        f.seek pos, IO::SEEK_SET
+        f.write((255 - c).chr)
+        pos += CHUNK_SIZE
+        print '.'
+      end
+    end
+
+    puts
+  end
+
+  def self.encode_dir(path)
+    Dir[File.join(path, '**/*')].each do |file|
+      next if File.directory?(file)
+      self.encode(file)
+    end
+  end
+
+end
+
+
+def abort
+  puts 'Usage: encode <path>'
+  exit
+end
+
+abort unless ARGV[0]
+
+path = File.expand_path(ARGV[0])
+
+abort unless File.exists?(path)
+
+File.directory?(path) ?
+  Encoder.encode_dir(path) :
+  Encoder.encode(path)
