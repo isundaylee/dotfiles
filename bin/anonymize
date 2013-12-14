@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+#
+# ANONYMIZE
+#
+# Rename all files in a directory to meaningless strings. 
+#
+# Run on anonymized directory to revert. 
+# Run on un-anonymized directory to anonymize. 
+#
+# Examples:
+#
+#   anonymize <path>
+#   anonymize ~/Desktop
+
+class Anonymizer
+
+  require 'base64'
+  require 'securerandom'
+  require 'fileutils'
+
+  def self.anonymize(path)
+    catalog = File.join(path, '.catalog')
+
+    if File.exists?(catalog)
+      # Reverting
+      puts 'Reverting'
+      f = File.open(catalog)
+      f.lines.to_a.reverse.each do |line|
+        from, to = line.split.map { |x| Base64.urlsafe_decode64(x) }
+        FileUtils.mv(to, from)
+        print '.'
+      end
+      puts
+      f.close
+      FileUtils.rm(catalog)
+    else
+      # Anonymizing
+      puts 'Anonymizing'
+      f = File.open(catalog, 'w')
+      Dir[File.join(path, '**/*')].reverse.each do |file|
+        name = SecureRandom.hex(32)
+        to = File.join(File.dirname(file), name)
+        line = Base64.urlsafe_encode64(file) + ' ' + Base64.urlsafe_encode64(to)
+        FileUtils.mv(file, to)
+        f.puts line
+        print '.'
+      end
+      f.close
+      puts
+    end
+  end
+
+end
+
+def abort
+  puts 'Usage: anonymize <path>'
+  exit
+end
+
+abort unless ARGV[0]
+
+path = File.expand_path(ARGV[0])
+
+abort unless (File.exists?(path) && File.directory?(path))
+
+Anonymizer.anonymize(path)
