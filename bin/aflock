@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+#
+# AFLOCK
+#
+# Attempt-flock? Or async-flock? 
+#
+# Try to lock a file and exec a command. 
+# If the file is already locked, exit with a message. 
+#
+# Examples:
+#
+#   aflock <lock_file> <command> [ <command args> ... ]
+
+def abort
+  puts 'Usage: aflock <lock_file> <command> [ <command args> ... ]'
+  exit
+end
+
+abort unless ARGV.size >= 2
+
+lock_file = ARGV.shift
+command = ARGV.map { |x| "\"#{x}\"" }.join(' ')
+
+File.open(lock_file) do |lock|
+
+  unless lock.flock(File::LOCK_NB | File::LOCK_EX)
+    $stderr.puts 'Lock in use. Exiting. '
+    exit 1
+  end
+
+  system(command)
+
+end
