@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+#
+# H
+#
+# `encode` and `anonymize` directory. 
+#
+# Examples:
+#
+#   h <path>
+#   h ~/Desktop
+
+def abort
+  puts 'Usage: anonymize <path>'
+  exit
+end
+
+abort unless ARGV[0]
+
+path = File.expand_path(ARGV[0])
+
+abort unless (File.exists?(path) && File.directory?(path))
+
+system "encode \"#{path}\""
+system "anonymize \"#{path}\""
