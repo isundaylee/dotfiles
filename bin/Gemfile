@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+# brew install imagemagick
+gem 'rmagick'

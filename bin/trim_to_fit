@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+#
+# Trim the image to fit particular aspect ratio.
+#
+# Examples:
+#   trim_to_fit width height input output
+#   trim_to_fit 200 100 in.png out.png
+#
+
+require 'rmagick'
+
+def abort
+  puts 'Usage: trim_to_fit width height input output'
+  exit
+end
+
+abort unless ARGV.size == 4
+
+width  = ARGV[0].to_i
+height = ARGV[1].to_i
+input  = ARGV[2]
+output = ARGV[3]
+
+abort if (width == 0 or height == 0 or (!File.exists?(input)))
+
+image     = Magick::Image.read(input)[0]
+ratio     = [1.0 * image.columns / width, 1.0 * image.rows / height].min
+new_image = image.crop(Magick::CenterGravity, (width * ratio).to_i, (height * ratio).to_i)
+
+new_image.write(output)
+
+
