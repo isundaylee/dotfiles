@@ -2,11 +2,11 @@
 #
 # ENCODE
 #
-# Encode (or decode!) a file to encrypt it. Used with `decode`. 
+# Encode (or decode!) a file to encrypt it.
 #
-# Run on unencoded file to encode. Run on encoded file to decode. 
+# Run on unencoded file to encode. Run on encoded file to decode.
 #
-# Run on directory to process recursively. 
+# Run on directory to process recursively.
 #
 # Examples:
 #
