@@ -1,10 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    CFPropertyList (2.2.5)
     rmagick (2.13.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  CFPropertyList
   rmagick

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+#
+# Print out the most frequently visited sites in Safari history.
+#
+# Usage:
+#
+#   $ topsites
+#   # => Simple, as it is.
+
+require 'cfpropertylist'
+
+# Domains with frequencies less than this threshold will not be printed
+CUTOFF_THRESHOLD = 10
+
+plist_path = File.expand_path('~/Library/Safari/history.plist')
+plist = CFPropertyList::List.new(file: plist_path)
+data = CFPropertyList.native_types(plist.value)
+
+domains = data['WebHistoryDomains.v2']
+domains.sort_by! { |x| x['itemCount'].to_i }.reverse!
+
+domains.select { |d| d['itemCount'].to_i > CUTOFF_THRESHOLD }.each { |d| puts "%4d %s" % [d['itemCount'].to_i, d['']] }
