@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+#
+# Tranlates non-ASCII punctuations to their ASCII equivalents.
+#
+# Example:
+#   ascii_map a.txt
+
+def abort
+  puts 'Usage: ascii_map <filename>'
+  exit
+end
+
+dict = {
+  '“' => '"',
+  '”' => '"',
+  '’' => '\''
+}
+
+abort unless ARGV.size >= 1
+filename = ARGV[0]
+
+abort unless File.exists?(filename)
+
+content = File.read(filename)
+dict.each { |a, b| content.gsub!(a, b) }
+
+content.scan(/[^\x00-\x7F]/).each { |x| $stderr.puts "Warning: untranslated non-ASCII character \"#{x}\"" }
+
+puts content
