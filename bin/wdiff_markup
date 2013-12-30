@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+#
+# Markup the output of wdiff (word diff) to HTML.
+#
+# Example:
+#   wdiff a b | wdiff_markup
+#
+
+require 'cgi'
+
+lines = ARGF.lines
+
+puts '<!doctype html><html><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head><style>.deleted { color: red; text-decoration: line-through; } .added { color: green; }</style></head><body>'
+
+lines.each do |line|
+
+  line = CGI.escapeHTML(line)
+
+  regex_deleted = /\[-(.*?)-\]/
+
+  line.gsub!(regex_deleted) do |p|
+    "<span class=\"deleted\">#{regex_deleted.match(p)[1]}</span>"
+  end
+
+  regex_added = /\{\+(.*?)\+\}/
+
+  line.gsub!(regex_added) do |p|
+    "<span class=\"added\">#{regex_added.match(p)[1]}</span>"
+  end
+
+  puts "<p>#{line}</p>"
+
+end
+
+puts '</body></html>'
