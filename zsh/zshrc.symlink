@@ -7,6 +7,10 @@ export PROJECTS=~/Programming
 # git repos directory
 export GITS=$PROJECTS/Git
 
+# enabling builtin ant
+export ANT_HOME="/usr/share/ant"
+export PATH=$PATH:$ANT_HOME/bin
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]
