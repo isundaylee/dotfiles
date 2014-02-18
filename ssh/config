@@ -1,0 +1,14 @@
+Host wflssu
+    HostName 208.66.74.106
+    Port 1984
+    User isundaylee
+
+Host tufts
+  HostName linux.eecs.tufts.edu
+  User jli02
+
+Host jinmei
+  HostName 211.136.168.38
+  User root
+  Port 8765
+
