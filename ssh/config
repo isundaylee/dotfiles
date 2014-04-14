@@ -12,3 +12,11 @@ Host jinmei
   User root
   Port 8765
 
+Host t
+  HostName t.ljh.me
+  User ubuntu
+  IdentityFile ~/Programming/Certificates/EC2-reg2.pem
+
+Host l
+  HostName ljh.me
+  User root
