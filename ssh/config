@@ -20,3 +20,7 @@ Host t
 Host l
   HostName ljh.me
   User root
+
+Host a
+  HostName athena.dialup.mit.edu
+  User jiahaoli
