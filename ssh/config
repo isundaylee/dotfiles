@@ -17,6 +17,10 @@ Host t
   User ubuntu
   IdentityFile ~/Programming/Certificates/EC2-reg2.pem
 
+Host be
+  HostName 54.164.74.107
+  User ubuntu
+
 Host l
   HostName ljh.me
   User root
