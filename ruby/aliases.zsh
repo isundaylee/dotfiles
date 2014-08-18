@@ -15,3 +15,5 @@ alias be='b exec'
 alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
 alias dep='bundle exec cap deploy'
+
+alias unicorn='unicorn -c config/unicorn.rb -p 3000'
