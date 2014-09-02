@@ -87,7 +87,12 @@ set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
+set_title() {
+  printf "\e]0;$@\a"
+}
+
 precmd() {
-  title "zsh" "%m" "%55<...<%~"
+  # title "zsh" "%m" "%55<...<%~"
+  set_title "`basename $PWD`"
   set_prompt
 }
