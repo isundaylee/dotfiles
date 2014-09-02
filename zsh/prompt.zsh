@@ -76,8 +76,13 @@ colored_pwd() {
   echo "%{$fg_bold[cyan]%}$(pwd)/%{$reset_color%}"
 }
 
+ssh_prompt() {
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    echo "%{$fg_bold[red]%}(SSH)%{$reset_color%} "
+  fi
+}
 
-export PROMPT=$'\n$(rb_prompt)in $(colored_pwd) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(ssh_prompt)$(rb_prompt)in $(colored_pwd) $(git_dirty)$(need_push)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
