@@ -28,3 +28,9 @@ Host l
 Host a
   HostName athena.dialup.mit.edu
   User jiahaoli
+
+Host imac
+  User Sunday
+  HostName jiahaos-imac.1142643752.members.btmm.icloud.com
+  AddressFamily inet6
+  Protocol 2
