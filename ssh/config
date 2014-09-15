@@ -34,3 +34,11 @@ Host imac
   HostName jiahaos-imac.1142643752.members.btmm.icloud.com
   AddressFamily inet6
   Protocol 2
+
+Host gce
+  User isundaylee 
+  HostName 146.148.49.95
+  IdentityFile ~/.ssh/gce
+  UserKnownHostsFile=/dev/null
+  CheckHostIP=no
+  StrictHostKeyChecking=no
