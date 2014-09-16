@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+#
+# latexmkfile
+#   Creates a simple makefile for XeLaTeX.
+#
+# Usage: latexmkfile filename
+#
+# Exmplae: latexmkfile trees
+
+MAKEFILE_TEMPLATE = <<-eos
+preview: _.pdf
+\topen _.pdf
+
+_.pdf: _.tex
+\txelatex _.tex
+eos
+
+file = 'makefile'
+name = ARGV[0]
+
+if name.nil?
+  puts 'Usage: latexmkfile filename'
+  exit
+end
+
+if File.exists?(file)
+  puts 'Makefile already exists. Not overriding. '
+  exit
+end
+
+File.write(file, MAKEFILE_TEMPLATE.gsub('_', name))
+puts 'Makefile written. '
