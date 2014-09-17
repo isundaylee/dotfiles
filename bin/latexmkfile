@@ -2,10 +2,13 @@
 #
 # latexmkfile
 #   Creates a simple makefile for XeLaTeX.
+#   Also touches the source file if it doesn't already exist.
 #
 # Usage: latexmkfile filename
 #
 # Exmplae: latexmkfile trees
+
+require 'fileutils'
 
 MAKEFILE_TEMPLATE = <<-eos
 preview: _.pdf
@@ -17,6 +20,7 @@ eos
 
 file = 'makefile'
 name = ARGV[0]
+tex = "#{name}.tex"
 
 if name.nil?
   puts 'Usage: latexmkfile filename'
@@ -30,3 +34,8 @@ end
 
 File.write(file, MAKEFILE_TEMPLATE.gsub('_', name))
 puts 'Makefile written. '
+
+if !File.exists?(tex)
+  FileUtils.touch(tex)
+  puts 'LaTeX source file touched. '
+end
