@@ -18,14 +18,20 @@ _.pdf: _.tex
 \txelatex _.tex
 eos
 
-file = 'makefile'
+folder = ARGV.delete('-f')
 name = ARGV[0]
-tex = "#{name}.tex"
 
 if name.nil?
   puts 'Usage: latexmkfile filename'
   exit
 end
+
+base_folder = folder ? name : '.'
+
+file = File.join(base_folder, 'makefile')
+tex = File.join(base_folder, "#{name}.tex")
+
+FileUtils.mkdir_p(base_folder) if folder
 
 if File.exists?(file)
   puts 'Makefile already exists. Not overriding. '
