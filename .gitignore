@@ -3,3 +3,4 @@ sublime2/User/Package Control.last-run
 git/gitconfig.symlink
 bin/.bundle
 bin/vendor
+bin/credentials.yml
