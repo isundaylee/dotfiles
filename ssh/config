@@ -22,7 +22,7 @@ Host be
   User ubuntu
 
 Host l
-  HostName ljh.me
+  HostName 173.255.238.93
   User root
 
 Host a
@@ -36,9 +36,13 @@ Host imac
   Protocol 2
 
 Host gce
-  User isundaylee 
+  User isundaylee
   HostName 146.148.49.95
   IdentityFile ~/.ssh/gce
   UserKnownHostsFile=/dev/null
   CheckHostIP=no
   StrictHostKeyChecking=no
+
+Host d
+  User root
+  HostName 104.131.68.90
