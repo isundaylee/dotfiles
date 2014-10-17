@@ -31,9 +31,7 @@ Host a
 
 Host imac
   User Sunday
-  HostName jiahaos-imac.1142643752.members.btmm.icloud.com
-  AddressFamily inet6
-  Protocol 2
+  HostName imac.ljh.me
 
 Host gce
   User isundaylee
