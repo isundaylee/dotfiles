@@ -100,7 +100,7 @@ class DNSSynchronizer
 
 end
 
-credentials = YAML.load(File.read('credentials.yml'))['dns_syncer']
+credentials = YAML.load(File.read(File.join(File.dirname(__FILE__), 'credentials.yml')))['dns_syncer']
 
 email = credentials['email']
 password = credentials['password']
