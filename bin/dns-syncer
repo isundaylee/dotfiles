@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+require 'yaml'
+
+class Hash
+  def to_url_params
+    elements = []
+    keys.size.times do |i|
+      elements << "#{keys[i]}=#{values[i]}"
+    end
+    elements.join('&')
+  end
+
+  def self.from_url_params(url_params)
+    result = {}.with_indifferent_access
+    url_params.split('&').each do |element|
+      element = element.split('=')
+      result[element[0]] = element[1]
+    end
+    result
+  end
+end
+
+class DNSSynchronizer
+  require 'socket'
+  require 'json'
+  require 'open-uri'
+  require 'net/http'
+  require 'openssl'
+
+  DNSPOD_API_URL = 'https://dnsapi.cn/'
+
+  def initialize(domain, subdomain, email, password, record_file = '/tmp/.dns_daemon')
+    @record_file = record_file
+    @domain = domain
+    @subdomain = subdomain
+    @email = email
+    @password = password
+  end
+
+  def sync
+    ip = Socket::getaddrinfo(Socket.gethostname, "echo", Socket::AF_INET)[0][3]
+    old_ip = File.read(@record_file) rescue nil
+
+    if ip == old_ip
+      puts 'Not changed. '
+      return
+    end
+
+    domain = request('Domain.List')['domains'].select { |x| x['name'] == @domain }.first['id']
+    records = request('Record.List', {domain_id: domain})['records'].select { |x| x['name'] == @subdomain }
+
+    domain_params = {
+      domain_id: domain,
+      sub_domain: @subdomain,
+      record_line: '默认',
+      record_type: 'A',
+      value: ip,
+      ttl: 120
+    }
+
+    if records.empty?
+      puts request('Record.Create', domain_params)
+    else
+      puts request('Record.Modify', domain_params.merge({
+        record_id: records.first['id']
+      }))
+    end
+
+    File.write(@record_file, ip)
+  end
+
+  private
+    def post(url, params)
+      uri = URI.parse(url)
+
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+      request = Net::HTTP::Post.new(uri.path)
+      request.body = URI.encode_www_form(params)
+
+      http.request(request).body
+    end
+
+    def request(name, params = {})
+      params.merge!({
+        login_email: @email,
+        login_password: @password,
+        format: 'json'
+      })
+
+      url = "#{DNSPOD_API_URL}#{name}"
+      result = post(url, params)
+
+      JSON.parse(result)
+    end
+
+end
+
+credentials = YAML.load(File.read('credentials.yml'))['dns_syncer']
+
+email = credentials['email']
+password = credentials['password']
+domain = credentials['domain']
+subdomain = credentials['subdomain']
+
+while true
+  DNSSynchronizer.new(domain, subdomain, email, password).sync
+  sleep 10
+end
