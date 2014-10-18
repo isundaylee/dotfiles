@@ -40,7 +40,7 @@ class DNSSynchronizer
   end
 
   def sync
-    ip = Socket::getaddrinfo(Socket.gethostname, "echo", Socket::AF_INET)[0][3]
+    ip = Socket.ip_address_list.detect{ |intf| intf.ipv4? and !intf.ipv4_loopback? and !intf.ipv4_multicast? and !intf.ipv4_private? }.ip_address
     old_ip = File.read(@record_file) rescue nil
 
     if ip == old_ip
