@@ -40,7 +40,15 @@ class DNSSynchronizer
   end
 
   def sync
-    ip = Socket.ip_address_list.detect{ |intf| intf.ipv4? and !intf.ipv4_loopback? and !intf.ipv4_multicast? and !intf.ipv4_private? }.ip_address
+    ips = Socket.ip_address_list.detect{ |intf| intf.ipv4? and !intf.ipv4_loopback? and !intf.ipv4_multicast? and !intf.ipv4_private? }
+
+    if ips.nil?
+      puts 'IP address not detected. '
+      return
+    end
+
+    ip = ips.ip_address
+
     old_ip = File.read(@record_file) rescue nil
 
     if ip == old_ip
