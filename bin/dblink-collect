@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+#
+# Collect all the Dropbox Synced directory symlinks
+
+require 'yaml'
+
+links = []
+
+Dir.glob(File.join(File.expand_path('~'), "**/*")) do |f|
+  next unless File.symlink?(f)
+  next unless File.expand_path(File.readlink(f)) =~ Regexp.new("^" + File.expand_path("~/Dropbox(.*?)/Synced"))
+  links << {
+    src: File.expand_path(File.readlink(f)),
+    dest: File.expand_path(f)
+  }
+end
+
+puts links.to_yaml
