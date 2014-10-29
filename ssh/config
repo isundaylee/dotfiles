@@ -44,3 +44,7 @@ Host gce
 Host d
   User root
   HostName 104.131.68.90
+
+Host bd
+  User mitchellgu
+  HostName 128.52.162.200
