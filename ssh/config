@@ -1,30 +1,9 @@
-Host wflssu
-    HostName 208.66.74.106
-    Port 1984
-    User isundaylee
-
-Host tufts
-  HostName linux.eecs.tufts.edu
-  User jli02
-
-Host jinmei
-  HostName 211.136.168.38
-  User root
-  Port 8765
-
-Host t
-  HostName t.ljh.me
-  User ubuntu
-  IdentityFile ~/Programming/Certificates/EC2-reg2.pem
-
-Host be
-  HostName 54.164.74.107
-  User ubuntu
-
+# Linode
 Host l
   HostName 173.255.238.93
   User root
 
+# Athena
 Host a
   HostName athena.dialup.mit.edu
   User jiahaoli
@@ -33,6 +12,7 @@ Host imac
   User Sunday
   HostName imac.ljh.me
 
+# Google Cloud Engine
 Host gce
   User isundaylee
   HostName 146.148.49.95
@@ -41,10 +21,12 @@ Host gce
   CheckHostIP=no
   StrictHostKeyChecking=no
 
+# DigitalOcean
 Host d
   User root
   HostName 104.131.68.90
 
+# BeaverDash
 Host bd
   User mitchellgu
   HostName 128.52.162.200

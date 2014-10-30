@@ -107,7 +107,30 @@ function winname {
 }
 
 # SSH that sets tab title properly
+function ssh_hostname {
+  case $1 in
+    l)
+      echo "Linode"
+      ;;
+    a)
+      echo "Athena"
+      ;;
+    d)
+      echo "Digital Ocean"
+      ;;
+    gce)
+      echo "Google Cloud Engine"
+      ;;
+    bd)
+      echo "BeaverDash"
+      ;;
+    *)
+      echo $1
+      ;;
+  esac
+}
+
 function ssh {
-  tabname "(SSH) $1"
+  tabname "(SSH) `ssh_hostname $1`"
   /usr/bin/ssh $*
 }
