@@ -93,6 +93,6 @@ set_title() {
 
 precmd() {
   # title "zsh" "%m" "%55<...<%~"
-  set_title "`basename $PWD`"
+  set_title "`hostname`"
   set_prompt
 }
