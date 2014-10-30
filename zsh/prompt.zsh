@@ -96,3 +96,18 @@ precmd() {
   set_title "`hostname`"
   set_prompt
 }
+
+# commands to set tab and window names
+function tabname {
+  printf "\e]1;$1\a"
+}
+
+function winname {
+  printf "\e]2;$1\a"
+}
+
+# SSH that sets tab title properly
+function ssh {
+  tabname "(SSH) $1"
+  /usr/bin/ssh $*
+}
