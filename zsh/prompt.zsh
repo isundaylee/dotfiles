@@ -93,7 +93,11 @@ set_title() {
 
 precmd() {
   # title "zsh" "%m" "%55<...<%~"
-  set_title "`hostname`"
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    set_title "(SSH) `hostname`"
+  else
+    set_title "`hostname`"
+  fi
   set_prompt
 }
 
