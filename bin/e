@@ -17,5 +17,5 @@
 if [ "$1" = "" ] ; then
   eval $EDITOR .
 else
-  eval $EDITOR "$1"
+  eval $EDITOR \"$1\"
 fi
