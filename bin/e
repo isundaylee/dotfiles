@@ -19,7 +19,7 @@ EDITOR = 'open -a "Sublime Text"'
 path = ARGV[0]
 
 if path
-  `#{EDITOR} \"l\"`
+  `#{EDITOR} \"#{path}\"`
 else
   l = Dir.glob('*.sublime-project')
 
