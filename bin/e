@@ -26,7 +26,7 @@ else
   if l.empty?
     `#{EDITOR} .`
   else
-    puts "#{EDITOR} \"#{l[0]}\""
-    `#{EDITOR} \"#{l[0]}\"`
+    puts "#{EDITOR} \"#{l}\""
+    `#{EDITOR} \"#{l}\"`
   end
 end
