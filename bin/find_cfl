@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+Dir.glob('**/*conflicted copy*').each do |f|
+  puts "rm \"#{f}\""
+end
