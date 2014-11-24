@@ -7,8 +7,8 @@ path = 'db/backups/heroku'
 FileUtils.mkdir_p(path)
 
 puts 'Capturing backup'
-`heroku pgbackups:capture --expire`
+`/usr/local/heroku/bin/heroku pgbackups:capture --expire`
 
 file = File.join(path, `date +"%m-%d-%y_%H%M%S"`).strip
 puts 'Writing backup to ' + file
-File.write(file, open(`heroku pgbackups:url`).read)
+File.write(file, open(`/usr/local/heroku/bin/heroku pgbackups:url`).read)
