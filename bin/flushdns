@@ -1,4 +1,2 @@
 #!/bin/sh
-dscacheutil -flushcache
-sudo killall -HUP mDNSResponder
-
+sudo discoveryutil udnsflushcaches
