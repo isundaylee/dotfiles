@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Displays the IP address
+
+curl 'http://ipecho.net/plain'
