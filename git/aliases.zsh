@@ -22,4 +22,5 @@ alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
            perl -pe 's/^[ \t]*//' | sed 's/ /\\\\ /g' | xargs git rm"
 alias gph='git push heroku master'
 alias ga='git add'
-alias 'glo'='glr origin master'
+alias glo='glr origin master'
+alias glop='glo && gp'
