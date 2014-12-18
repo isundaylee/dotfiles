@@ -12,15 +12,6 @@ Host imac
   User Sunday
   HostName imac.ljh.me
 
-# Google Cloud Engine
-Host gce
-  User isundaylee
-  HostName 146.148.49.95
-  IdentityFile ~/.ssh/gce
-  UserKnownHostsFile=/dev/null
-  CheckHostIP=no
-  StrictHostKeyChecking=no
-
 # DigitalOcean
 Host d
   User root
