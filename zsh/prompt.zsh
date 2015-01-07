@@ -96,7 +96,7 @@ precmd() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     set_title "(SSH) `hostname`"
   else
-    set_title "`hostname`"
+    set_title "`basename \`pwd\``"
   fi
   set_prompt
 }
