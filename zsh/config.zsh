@@ -46,3 +46,15 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
+
+autoload -U add-zsh-hook
+
+load-local-conf() {
+  # check file exists, is regular file and is readable:
+  if [[ -f .source_me && -r .source_me ]]; then
+    source .source_me
+    echo 'Local config file sourced. '
+  fi
+}
+
+add-zsh-hook chpwd load-local-conf
