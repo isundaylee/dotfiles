@@ -19,3 +19,8 @@ alias dep='bundle exec cap deploy'
 alias uni='unicorn -c config/unicorn.rb -p 3000'
 
 alias ks='kill `cat tmp/pids/server.pid`'
+
+alias rails='be rails'
+alias rake='be rake'
+alias cap='be cap'
+alias dp='cap deploy'
