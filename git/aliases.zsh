@@ -25,3 +25,10 @@ alias gph='git push heroku master'
 alias ga='git add'
 alias glo='glr origin master'
 alias glop='glo && gp'
+
+# Legit alias
+alias gbs='legit branches'
+alias gsw='legit switch'
+alias gpub='legit publish'
+alias gunpub='legit unpublish'
+alias gsync='legit sync'
