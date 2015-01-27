@@ -21,3 +21,14 @@ Host d
 Host bd
   User mitchellgu
   HostName 128.52.162.200
+
+# TheTech Staging CMS
+Host ttcms
+  User ubuntu
+  HostName 54.148.20.163
+  IdentityFile ~/Programming/Certificates/thetech-staging-cms.pem
+
+# Tech
+Host tech
+  User jiahaoli
+  HostName the-tech.mit.edu
