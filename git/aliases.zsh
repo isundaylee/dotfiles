@@ -32,3 +32,5 @@ alias gsw='legit switch'
 alias gpub='legit publish'
 alias gunpub='legit unpublish'
 alias gsync='legit sync'
+alias gbo='legit sprout'
+
