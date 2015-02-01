@@ -33,4 +33,7 @@ alias gpub='legit publish'
 alias gunpub='legit unpublish'
 alias gsync='legit sync'
 alias gbo='legit sprout'
+alias gpc='gpub `gcb`'
 
+# Branch-related
+alias gcb='git rev-parse --abbrev-ref HEAD' # current branch
