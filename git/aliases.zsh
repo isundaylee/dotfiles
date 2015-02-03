@@ -26,6 +26,8 @@ alias ga='git add'
 alias glo='glr origin master'
 alias glop='glo && gp'
 
+alias hpr='hub pull-request -i'
+
 # Legit alias
 alias gbs='legit branches'
 alias gsw='legit switch'
@@ -37,3 +39,4 @@ alias gpc='gpub `gcb`'
 
 # Branch-related
 alias gcb='git rev-parse --abbrev-ref HEAD' # current branch
+
