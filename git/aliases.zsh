@@ -26,7 +26,7 @@ alias ga='git add'
 alias glo='glr origin master'
 alias glop='glo && gp'
 
-alias hpr='hub pull-request -i'
+alias hpr='gp && hub pull-request -i'
 
 # Legit alias
 alias gbs='legit branches'
