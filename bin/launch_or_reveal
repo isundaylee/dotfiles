@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+#
+# Launch (if it is not already running) and reveal a given program.
+# Intended to be used with Alfred workflow binding.
+#
+# Examples:
+#
+#   launch_or_reveal Preview
+#   launch_or_reveal "Sublime Text"
+
+def osascript(script)
+  system 'osascript', *script.split(/\n/).map { |line| ['-e', line] }.flatten
+end
+
+script = <<-eos
+  run application "%s"
+  tell application "System Events" to set frontmost of process "%s" to true
+eos
+
+osascript(script % [ARGV[0], ARGV[0]])
