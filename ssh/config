@@ -25,10 +25,15 @@ Host bd
 # TheTech Staging CMS
 Host ttcms
   User ubuntu
-  HostName 54.148.20.163
-  IdentityFile ~/Programming/Certificates/thetech-staging-cms.pem
+  HostName ec2-54-84-128-84.compute-1.amazonaws.com
+  IdentityFile ~/Programming/Certificates/tech-staging.pem
 
 # Tech
 Host tech
   User jiahaoli
   HostName the-tech.mit.edu
+
+# Aliyun
+Host ali
+  User root
+  HostName 123.57.248.146
