@@ -53,5 +53,5 @@ unset config_files
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Requires virtualenv
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+# export PIP_REQUIRE_VIRTUALENV=true
+# export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
