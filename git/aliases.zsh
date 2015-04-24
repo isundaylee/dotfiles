@@ -34,8 +34,14 @@ alias gsw='legit switch'
 alias gpub='legit publish'
 alias gunpub='legit unpublish'
 alias gsync='legit sync'
+alias gn='gsync'
 alias gbo='legit sprout'
 alias gpc='gpub `gcb`'
+
+function gswp() {
+  gsw $1
+  git stash pop
+}
 
 # Branch-related
 alias gcb='git rev-parse --abbrev-ref HEAD' # current branch
