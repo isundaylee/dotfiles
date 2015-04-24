@@ -9,21 +9,36 @@ else
   git="/usr/bin/git"
 fi
 
+SEGMENT_SEPARATOR=''
+
+prompt_segment() {
+  if [[ -z "$last_used" ]]
+  then
+    echo -n "$bg[$1]$fg[$2]  $3 "
+  else
+    echo -n "$bg[$1]$fg[$last_used]$SEGMENT_SEPARATOR $fg[$2]$3 "
+  fi
+  last_used=$1
+}
+
+prompt_end() {
+  prompt_segment black white ''
+  echo ''
+}
+
 git_branch() {
   echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
   st=$($git status 2>/dev/null | tail -n 1)
-  if [[ $st == "" ]]
+  if [[ $st != "" ]]
   then
-    echo ""
-  else
-    if [[ "$st" =~ ^nothing ]]
+    if [[ "$st" =~ "^nothing to commit" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      prompt_segment green black "$(git_prompt_info)"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      prompt_segment red white "$(git_prompt_info)"
     fi
   fi
 }
@@ -41,9 +56,8 @@ unpushed () {
 need_push () {
   if [[ $(unpushed) == "" ]]
   then
-    echo " "
   else
-    echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
+    prompt_segment magenta white 'unpushed'
   fi
 }
 
@@ -62,9 +76,7 @@ ruby_version() {
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
   then
-    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%} "
-  else
-    echo ""
+    prompt_segment red white "$(ruby_version) "
   fi
 }
 
@@ -73,7 +85,7 @@ directory_name() {
 }
 
 colored_pwd() {
-  echo "%{$fg_bold[cyan]%}$(pwd)/%{$reset_color%}"
+  prompt_segment blue white "in $(pwd)"
 }
 
 ssh_prompt() {
@@ -82,9 +94,17 @@ ssh_prompt() {
   fi
 }
 
-export PROMPT=$'\n$(ssh_prompt)$(rb_prompt)in $(colored_pwd) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'%{$reset_color%}\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+  echo ''
+  last_used=''
+  ssh_prompt
+  rb_prompt
+  colored_pwd
+  git_dirty
+  need_push
+  prompt_end
 }
 
 set_title() {
@@ -98,6 +118,7 @@ precmd() {
   else
     set_title "`basename \`pwd\``"
   fi
+
   set_prompt
 }
 
