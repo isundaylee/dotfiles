@@ -85,7 +85,7 @@ directory_name() {
 }
 
 colored_pwd() {
-  prompt_segment blue white "in $(pwd)"
+  prompt_segment blue white "$(pwd)"
 }
 
 ssh_prompt() {
