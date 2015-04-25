@@ -37,3 +37,8 @@ Host tech
 Host ali
   User root
   HostName 123.57.248.146
+
+# Digital Ocean minecraft
+Host mc
+  User root
+  HostName 45.55.234.215
