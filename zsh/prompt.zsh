@@ -90,7 +90,7 @@ colored_pwd() {
 
 ssh_prompt() {
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    echo "%{$fg_bold[red]%}(SSH)%{$reset_color%} "
+    prompt_segment green black "SSH"
   fi
 }
 
