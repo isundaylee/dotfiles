@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+#
+# Usage: pronounce <word>
+
+require 'bundler/setup'
+require 'nokogiri'
+require 'fileutils'
+require 'open-uri'
+
+CACHE_DIR = '/tmp/pronounce/'
+
+if ARGV.size < 1
+  puts 'Usage: pronounce <word>'
+  exit
+end
+
+FileUtils.mkdir_p CACHE_DIR
+
+def cache_path(word)
+  File.join(CACHE_DIR, word + '.mp3')
+end
+
+word = ARGV[0].strip
+path = cache_path(word)
+
+if !File.exists?(path)
+  url = 'http://www.oxfordlearnersdictionaries.com/definition/english/' + word
+
+  begin
+    doc = Nokogiri::HTML(open(url).read)
+
+    ele = doc.at_css('.pron-g[geo=br] div[data-src-mp3]')
+
+    if word
+      mp3 = ele['data-src-mp3']
+
+      File.write(path, open(mp3).read)
+    end
+  rescue OpenURI::HTTPError
+    puts 'Word not found. '
+    exit
+  end
+end
+
+`afplay #{path}`
