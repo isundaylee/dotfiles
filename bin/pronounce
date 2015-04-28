@@ -33,8 +33,7 @@ if !File.exists?(path) || (File.size(path) == 0)
 
     if word
       mp3 = ele['data-src-mp3']
-
-      File.write(path, open(mp3).read)
+      `curl "#{mp3}" > "#{path}"`
     end
   rescue OpenURI::HTTPError
     puts 'Word not found. '
