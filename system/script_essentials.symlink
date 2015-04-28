@@ -1,4 +1,4 @@
-export PATH="$HOME/Programming/Git/sunutils:$HOME/Programming/Git/balance_meter:$PATH"
+export PATH="$HOME/.dotfiles/bin:$HOME/Programming/Git/sunutils:$HOME/Programming/Git/balance_meter:$PATH"
 export RUBYOPT='-E utf-8:utf-8'
 
 eval "$(/usr/local/bin/rbenv init -)"

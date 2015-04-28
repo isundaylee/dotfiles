@@ -23,7 +23,7 @@ end
 word = ARGV[0].strip
 path = cache_path(word)
 
-if !File.exists?(path)
+if !File.exists?(path) || (File.size(path) == 0)
   url = 'http://www.oxfordlearnersdictionaries.com/definition/english/' + word
 
   begin
