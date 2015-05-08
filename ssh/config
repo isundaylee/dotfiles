@@ -42,3 +42,9 @@ Host ali
 Host mc
   User root
   HostName 45.55.234.215
+
+# 6.01
+Host 601
+  User jiahaoli
+  HostName sicp-s2.mit.edu
+  ForwardX11 yes

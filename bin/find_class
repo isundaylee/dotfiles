@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+#
+# Print a cd command that moves into the folder in my MIT Dropbox for a certain class
+#
+
+DROPBOX_PATH = File.expand_path('~/Dropbox (MIT)')
+
+def normalize_name(name)
+  name.chars.select { |d| d != '.' }.join
+end
+
+name = normalize_name(ARGV[0])
+
+# Reverse to prefer later years
+Dir.glob(File.join(DROPBOX_PATH, '201*/*')).reverse.each do |f|
+  basename = normalize_name(File.basename(f))
+
+  if basename == name
+    puts "#{f}"
+    exit
+  end
+end
