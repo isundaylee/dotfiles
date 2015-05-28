@@ -3,7 +3,11 @@ alias vmmount='c && sshfs vm:/ vm'
 alias vmbr='vmbuildrun'
 
 function vmbuild() {
-  ssh vm ". ~/.bash_profile && build '$@'"
+  if (( $# == 0 )) then
+    ssh vm ". ~/.bash_profile && build"
+  else
+    ssh vm ". ~/.bash_profile && build '$@'"
+  fi
 }
 
 function vmrun() {
