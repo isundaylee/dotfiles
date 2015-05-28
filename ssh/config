@@ -48,3 +48,19 @@ Host 601
   User jiahaoli
   HostName sicp-s2.mit.edu
   ForwardX11 yes
+
+# vm
+Host vmr
+  User root
+  HostName vm
+
+Host vm
+  User jiahao
+  HostName vm
+
+# PureStorage
+
+# mercury
+Host mercury
+  User jiahao.li
+  HostName mercury
