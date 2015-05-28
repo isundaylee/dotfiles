@@ -22,7 +22,7 @@ prompt_segment() {
 }
 
 prompt_end() {
-  prompt_segment black white ''
+  prompt_segment default white ''
   echo ''
 }
 
@@ -41,6 +41,10 @@ git_dirty() {
       prompt_segment red white "$(git_prompt_info)"
     fi
   fi
+}
+
+git_hidden() {
+  prompt_segment red white "Git Info Not Shown"
 }
 
 git_prompt_info () {
@@ -102,8 +106,14 @@ set_prompt () {
   ssh_prompt
   rb_prompt
   colored_pwd
-  git_dirty
-  need_push
+
+  if [ -z "$SKIP_GIT_PROMPT" ]; then
+    git_dirty
+    need_push
+  else
+    git_hidden
+  fi
+
   prompt_end
 }
 
