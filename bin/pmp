@@ -1,0 +1,3 @@
+#!/bin/bash
+
+eval `distcc-pump --startup`; distcc-pump make -j $(distcc -j) CC="distcc gcc" $@ ; distcc-pump --shutdown
