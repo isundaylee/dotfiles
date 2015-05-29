@@ -7,24 +7,40 @@ then
 fi
 
 # The rest of my fun git aliases
-alias gl='git pull --prune'
-alias glr='git pull --rebase --prune'
-alias glrom='git pull --rebase --prune origin master'
+
+# Utilities
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gc='git commit'
 alias gca='git commit -a'
-alias gco='git checkout'
 alias gb='git branch'
+alias ga='git add'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+alias gco='git checkout'
+
+# Pull
+alias gl='git pull --prune'
+alias glr='git pull --rebase --prune'
+alias glo='gl origin'
+alias glro='glr origin'
+alias gloc='glo `gcb`'
+alias glroc='glro `gcb`'
+
+alias gll='glroc' # Just because it's used 90% of the time
+
+# Push
+alias gp='git push'
+alias gpo='gp origin'
+alias gpoc='gpo `gcb`'
+
+alias gpp='gpoc' # Just because it's used 90% of the time
+
+# Miscellaneous (or I don't really know what these do)
+alias gph='git push heroku master'
 alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
            perl -pe 's/^[ \t]*//' | sed 's/ /\\\\ /g' | xargs git rm"
-alias gph='git push heroku master'
-alias ga='git add'
-alias glo='glr origin master'
-alias glop='glo && gp'
+alias glrom='git pull --rebase --prune origin master'
 
 alias hpr='gp && hub pull-request -i'
 
