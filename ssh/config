@@ -58,6 +58,14 @@ Host vm
   User jiahao
   HostName vm
 
+Host wbl
+  User root
+  HostName 45.55.150.178
+
+Host vct
+  User shouzhiwan
+  HostName csil.cs.ucsb.edu
+
 # PureStorage
 
 # mercury
