@@ -24,3 +24,6 @@ alias rails='be rails'
 alias rake='be rake'
 alias cap='be cap'
 alias dp='cap deploy'
+
+
+alias puma='be puma -C config/puma.rb'
