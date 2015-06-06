@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+#
+# Usage: mcpatch PATH-TO-MC-JAR PATH-TO-MOD-JAR PATH-TO-OUTPUT-JAR
+
+require 'fileutils'
+
+mc, mod, out = ARGV[0], ARGV[1], ARGV[2]
+
+FileUtils.rm_rf('/tmp/s')
+FileUtils.mkdir_p('/tmp/s')
+FileUtils.cp(mc, '/tmp/s/mc.jar')
+
+`cd /tmp/s && unzip mc.jar && rm mc.jar`
+
+FileUtils.rm_rf('/tmp/ss')
+FileUtils.mkdir_p('/tmp/ss')
+FileUtils.cp(mod, '/tmp/ss/mod.zip')
+
+`cd /tmp/ss && unzip mod.zip && rm mod.zip`
+
+`rsync -r /tmp/ss/ /tmp/s`
+
+FileUtils.rm_rf('/tmp/s/META-INF')
+
+`cd /tmp/s && zip -r out.jar *`
+
+FileUtils.cp('/tmp/s/out.jar', out)
