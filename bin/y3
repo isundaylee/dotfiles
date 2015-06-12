@@ -2,6 +2,7 @@
 #
 # A wrapper for youtube-mp3.rb
 
-DIR="$HOME/Programming/Git/youtube-mp3/youtube-mp3.rb"
+DIR="$HOME/Programming/Git/youtube-mp3"
 
-ruby $DIR "$1" --import $2
+cd $DIR
+bundle exec ruby youtube-mp3.rb "$1" --import $2
