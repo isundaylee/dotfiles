@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# A wrapper for youtube-mp3.rb
+
+DIR="$HOME/Programming/Git/youtube-mp3/youtube-mp3.rb"
+
+ruby $DIR "$1" --import $2
