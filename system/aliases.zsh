@@ -8,3 +8,6 @@ then
   alias ll="gls -l --color"
   alias la='gls -A --color'
 fi
+
+alias SS='screen -S'
+alias Sr='screen -r -S'
