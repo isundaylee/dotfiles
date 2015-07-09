@@ -55,19 +55,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Requires virtualenv
 # export PIP_REQUIRE_VIRTUALENV=true
 # export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-
-# rbenv (seems only necessary in Linux)
-
-if [ "$(uname -s)" = "Linux" ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-# distcc
-if [ -e "$HOME/.distcc/hosts" ]; then
-    export DISTCC_POTENTIAL_HOSTS="`cat $HOME/.distcc/hosts`"
-fi
-
-# ccache
-if [ -e "/usr/lib/ccache/" ]; then
-    export PATH="/usr/lib/ccache:$PATH"
-fi
