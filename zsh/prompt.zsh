@@ -61,7 +61,7 @@ need_push () {
   if [[ $(unpushed) == "" ]]
   then
   else
-    prompt_segment magenta white 'unpushed'
+    prompt_segment magenta black 'unpushed'
   fi
 }
 
@@ -80,7 +80,7 @@ ruby_version() {
 rb_prompt() {
   if ! [[ -z "$(ruby_version)" ]]
   then
-    prompt_segment red white "$(ruby_version) "
+    prompt_segment green black "$(ruby_version) "
   fi
 }
 
@@ -89,7 +89,7 @@ directory_name() {
 }
 
 colored_pwd() {
-  prompt_segment blue white "$(pwd)"
+  prompt_segment blue black "$(pwd)"
 }
 
 ssh_prompt() {
