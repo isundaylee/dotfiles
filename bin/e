@@ -45,12 +45,5 @@ path = ARGV[0]
 if path
   `#{EDITOR} \"#{path}\"`
 else
-  l = Dir.glob('*.sublime-workspace')
-
-  if l.empty?
-    `#{EDITOR} .`
-  else
-    puts "#{EDITOR} \"#{l[0]}\""
-    `#{EDITOR} \"#{l[0]}\"`
-  end
+  `#{EDITOR} .`
 end
