@@ -51,7 +51,7 @@ Host 601
 
 # vm
 Host vmr
-  User root
+  User jiahao
   HostName vm
 
 Host vm
@@ -72,3 +72,36 @@ Host vct
 Host mercury
   User jiahao.li
   HostName mercury
+
+Host vma
+  HostName vm-jiahao
+  User root
+  IdentityFile ~/.ssh/id_pure_root
+
+Host vmb
+  HostName vm-Daniel-Sonner
+  User root
+  IdentityFile ~/.ssh/id_pure_root
+
+Host vta
+  HostName vm-repl-bw-a
+  User root
+
+Host vtb
+  HostName vm-repl-bw-b
+  User root
+
+Host vtc
+  HostName vm-repl-bw-c
+  User root
+
+Host git.dev.purestorage.com
+  User jiahao.li
+
+Host d0
+  HostName c21-6-0
+  User root
+
+Host d1
+  HostName c21-6-1
+  User root
