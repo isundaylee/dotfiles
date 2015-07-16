@@ -129,6 +129,7 @@ precmd() {
     set_title "`basename \`pwd\``"
   fi
 
+  tabreset
   set_prompt
 }
 
@@ -165,7 +166,3 @@ function ssh_hostname {
   esac
 }
 
-function ssh {
-  tabname "(SSH) `ssh_hostname $1`"
-  /usr/bin/ssh $*
-}
