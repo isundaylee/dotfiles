@@ -9,3 +9,5 @@ then
 fi
 
 compdef _git gsw=git-checkout
+compdef _git gco=git-checkout
+compdef _git glog=git-log
