@@ -98,7 +98,7 @@ ssh_prompt() {
   fi
 }
 
-export PROMPT=$'%{$reset_color%}\n› '
+export PROMPT=$'%{$reset_color%}\n λ  '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
   echo ''
