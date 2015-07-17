@@ -37,6 +37,10 @@ alias gpoc='gpo `gcb`'
 
 alias gpp='gpoc' # Just because it's used 90% of the time
 
+# Show
+alias gsh="git show"
+alias gshn="git show --name-only"
+
 # Miscellaneous (or I don't really know what these do)
 alias gph='git push heroku master'
 alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
