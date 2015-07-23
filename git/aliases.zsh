@@ -21,6 +21,7 @@ alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gasq='git rebase --autosquash -i'
+alias grb='git rebase'
 
 # Pull
 alias gl='git pull --prune'
