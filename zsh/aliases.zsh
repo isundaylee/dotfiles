@@ -21,3 +21,5 @@ function search() {
 function class() {
   cd "`find_class $1`"
 }
+
+alias dok='ssh dokku@apps '
