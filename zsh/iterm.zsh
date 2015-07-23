@@ -29,6 +29,7 @@ function ssh_hostname {
       ;;
     dokku)
       echo "Dokku"
+      ;; 
     *)
       echo $1
       ;;
