@@ -56,4 +56,4 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # export PIP_REQUIRE_VIRTUALENV=true
 # export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
-source /Users/jiahao.li/.iterm2_shell_integration.zsh
+source $HOME/.iterm2_shell_integration.zsh
