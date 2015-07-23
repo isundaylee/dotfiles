@@ -27,6 +27,8 @@ function ssh_hostname {
     bd)
       echo "BeaverDash"
       ;;
+    dokku)
+      echo "Dokku"
     *)
       echo $1
       ;;

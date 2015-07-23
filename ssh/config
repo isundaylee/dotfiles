@@ -66,6 +66,10 @@ Host vct
   User shouzhiwan
   HostName csil.cs.ucsb.edu
 
+Host dokku
+  HostName 45.55.136.175
+  User root
+
 # PureStorage
 
 # mercury
@@ -104,4 +108,20 @@ Host d0
 
 Host d1
   HostName c21-6-1
+  User root
+
+Host tb0
+  HostName d45-4-ct0
+  User root
+
+Host tb1
+  HostName d45-4-ct1
+  User root
+
+Host t30
+  HostName d45-3-ct0
+  User root
+
+Host t31
+  HostName d45-3-ct1
   User root
