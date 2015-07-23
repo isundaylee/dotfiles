@@ -142,27 +142,3 @@ function winname {
   printf "\e]2;$1\a"
 }
 
-# SSH that sets tab title properly
-function ssh_hostname {
-  case $1 in
-    l)
-      echo "Linode"
-      ;;
-    a)
-      echo "Athena"
-      ;;
-    d)
-      echo "Digital Ocean"
-      ;;
-    gce)
-      echo "Google Cloud Engine"
-      ;;
-    bd)
-      echo "BeaverDash"
-      ;;
-    *)
-      echo $1
-      ;;
-  esac
-}
-
