@@ -70,6 +70,11 @@ Host dokku
   HostName 45.55.136.175
   User root
 
+Host apps
+  HostName 45.55.3.169
+  User root
+  RequestTTY yes
+
 # PureStorage
 
 # mercury
