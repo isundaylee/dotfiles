@@ -7,6 +7,9 @@ export PROJECTS=~/Programming
 # git repos directory
 export GITS=$PROJECTS/Git
 
+# vagrant directory
+export VAGRANTS=$PROJECTS/Vagrant
+
 # enabling builtin ant
 export ANT_HOME="/usr/share/ant"
 export PATH=$PATH:$ANT_HOME/bin
