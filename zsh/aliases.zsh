@@ -23,3 +23,7 @@ function class() {
 }
 
 alias dok='ssh dokku@apps '
+
+function puse() {
+  lsof -i tcp:$1 $2
+}
