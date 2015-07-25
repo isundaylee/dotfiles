@@ -27,3 +27,18 @@ alias dok='ssh dokku@apps '
 function puse() {
   lsof -i tcp:$1 $2
 }
+
+# short url functions
+SHORT_URL_BASE='http://jiahao.link/'
+
+function uset() {
+  curl -s --data-urlencode "url=$1" $SHORT_URL_BASE/$2 | jq ".url//.error" -r
+}
+
+function uget() {
+  curl -s $SHORT_URL_BASE/$1 | jq ".actual_url//.error" -r
+}
+
+function uopen() {
+  open "`uget $1`"
+}
