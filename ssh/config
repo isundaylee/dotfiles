@@ -72,7 +72,7 @@ Host dokku
 
 Host apps
   HostName 45.55.3.169
-  User root
+  User jiahao
   RequestTTY yes
 
 # PureStorage
