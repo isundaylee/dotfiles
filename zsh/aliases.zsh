@@ -32,7 +32,7 @@ function puse() {
 SHORT_URL_BASE='http://jiahao.link/'
 
 function uset() {
-  curl -s --data-urlencode "url=$1" $SHORT_URL_BASE/$2 | jq ".url//.error" -r
+  curl -s -H "Accept: application/json" --data-urlencode "url=$1" $SHORT_URL_BASE/$2 | jq ".url//.error" -r
 }
 
 function uget() {
@@ -40,5 +40,5 @@ function uget() {
 }
 
 function uopen() {
-  open "`uget $1`"
+  open "$SHORT_URL_BASE/$1"
 }
