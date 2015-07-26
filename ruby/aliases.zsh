@@ -27,3 +27,5 @@ alias dp='cap deploy'
 
 
 alias puma='be puma -C config/puma.rb'
+
+alias httpd='ruby -run -e httpd'
