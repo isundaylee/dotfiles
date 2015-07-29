@@ -8,6 +8,12 @@ tabreset() {
   echo -ne "\033]6;1;bg;*;default\a"
 }
 
+if [ ! -z "$DISPLAY" ]; then
+    tabtitle () { print -Pn "^[]2;$1^G" }
+else
+    tabtitle () { }
+fi
+
 # SSH that sets tab title and tab color properly
 
 function ssh_hostname {
@@ -29,7 +35,7 @@ function ssh_hostname {
       ;;
     dokku)
       echo "Dokku"
-      ;; 
+      ;;
     *)
       echo $1
       ;;
@@ -56,3 +62,10 @@ function ssh {
   /usr/bin/ssh $*
 }
 
+# Rails server that sets tab title and tab color properly
+
+function rs {
+  tabname "Rails Server"
+  tabcolor 27 113 250
+  bundle exec rails server
+}
