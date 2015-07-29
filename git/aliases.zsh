@@ -52,6 +52,8 @@ alias glrom='git pull --rebase --prune origin master'
 
 alias hpr='gp && hub pull-request -i'
 
+alias dp='git push apps-dev HEAD:master'
+
 # Legit alias
 alias gbs='legit branches'
 alias gsw='legit switch'
