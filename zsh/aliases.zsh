@@ -3,6 +3,8 @@ alias re='reload!'
 alias 1803='class 1803'
 alias 6006='class 6006'
 
+alias ..="cd .."
+
 function take() {
   mkdir $1
   cd $1
