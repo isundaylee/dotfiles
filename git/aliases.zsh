@@ -44,15 +44,19 @@ alias gpp='gpoc' # Just because it's used 90% of the time
 alias gsh="git show"
 alias gshn="git show --name-only"
 
+# Remote
+alias grl="git remote -v"
+alias grr="git remote remove"
+alias gra="git remote add"
+
 # Miscellaneous (or I don't really know what these do)
 alias gph='git push heroku master'
 alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
            perl -pe 's/^[ \t]*//' | sed 's/ /\\\\ /g' | xargs git rm"
 alias glrom='git pull --rebase --prune origin master'
-
 alias hpr='gp && hub pull-request -i'
-
 alias dp='git push apps-dev HEAD:master'
+alias gname='basename `git rev-parse --show-toplevel`'
 
 # Legit alias
 alias gbs='legit branches'

@@ -24,7 +24,20 @@ function class() {
   cd "`find_class $1`"
 }
 
+# dokku
+
 alias dok='ssh dokku@apps '
+alias run='dok run `gname`-dev'
+alias prun='dok run `gname`'
+alias dlog='dok logs `gname`-dev'
+alias pdlog='dok logs `gname`'
+
+function dok-add() {
+    grr apps
+    gra apps dokku@apps:`gname`
+    grr apps-dev
+    gra apps-dev dokku@apps:`gname`-dev
+}
 
 function puse() {
   lsof -i tcp:$1 $2
@@ -43,4 +56,13 @@ function uget() {
 
 function uopen() {
   open "$SHORT_URL_BASE/$1"
+}
+
+# backup
+function bak() {
+    cp "$1" "$1.bak"
+}
+
+function unbak() {
+    cp "$1" "${1%.bak}"
 }

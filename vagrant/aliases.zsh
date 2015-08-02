@@ -14,5 +14,5 @@ function vssh() {
         vagrant ssh-config > $VAGRANT_SSH_CONFIG_FILE
     fi
 
-    ssh -F $VAGRANT_SSH_CONFIG_FILE default
+    ssh -A -F $VAGRANT_SSH_CONFIG_FILE default
 }

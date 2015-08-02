@@ -26,3 +26,5 @@ alias rake='be rake'
 alias puma='be puma -C config/puma.rb'
 
 alias httpd='ruby -run -e httpd'
+
+alias rru='rerun -i "*.haml" -i "*.coffee" -i "*.sass" -- bundle exec rackup -p 5000'
